@@ -44,7 +44,35 @@ architecture Behavioral of ws2812_tb is
                 addrb, dinb : out std_logic_vector (31 downto 0)
                 );
         end component;
+    signal clk : std_logic;
+    signal doutb : std_logic_vector (31 downto 0);
+    signal dout, rstb, enb : std_logic;
+    signal web : std_logic_vector (3 downto 0);
+    signal addrb, dinb : std_logic_vector (31 downto 0);
+    
 begin
+
+    DUT : ws2812 port map (clk=>clk, doutb=>doutb,
+                        dout=>dout, rstb=>rstb, enb=>enb,
+                        web=>web, addrb=>addrb, dinb=>dinb);
+                        
+    process
+    begin
+        clk <= '0';
+        doutb <= (OTHERS => '0');
+        wait for 50 ns;
+        doutb(31) <= '1';
+        doutb(15) <= '1';
+        doutb(1) <= '1';
+        wait for 50 ns;
+        for I in 0 to 10000 loop
+            clk <= '1';
+            wait for 100 ns;
+            clk <= '0';
+            wait for 100 ns;
+        end loop;
+        wait;
+    end process;
 
 
 end Behavioral;
