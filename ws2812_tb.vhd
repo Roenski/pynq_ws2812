@@ -60,16 +60,16 @@ begin
     begin
         clk <= '0';
         doutb <= (OTHERS => '0');
-        wait for 50 ns;
+        wait for 25 ns;
         doutb(31) <= '1';
         doutb(15) <= '1';
         doutb(1) <= '1';
-        wait for 50 ns;
+        wait for 25 ns;
         for I in 0 to 10000 loop
             clk <= '1';
-            wait for 100 ns;
+            wait for 25 ns;
             clk <= '0';
-            wait for 100 ns;
+            wait for 25 ns;
         end loop;
         wait;
     end process;
