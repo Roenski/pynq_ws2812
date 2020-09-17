@@ -33,16 +33,11 @@
 #
 #*****************************************************************************************
 
-# Set the reference directory for source file relative paths (by default the value is script directory path)
-set origin_dir "."
+# Set the reference directory to where the script is
+set origin_dir [file dirname [info script]]
 
-# Use origin directory path location variable, if specified in the tcl shell
-if { [info exists ::origin_dir_loc] } {
-  set origin_dir $::origin_dir_loc
-}
-
-# Set the project name
-set _xil_proj_name_ "ws2812_pynq"
+# Create project
+create_project ws2812_pynq $origin_dir/ws2812_pynq
 
 # Use project name variable, if specified in the tcl shell
 if { [info exists ::user_project_name] } {
@@ -489,3 +484,10 @@ move_dashboard_gadget -name {drc_1} -row 2 -col 0
 move_dashboard_gadget -name {timing_1} -row 0 -col 1
 move_dashboard_gadget -name {utilization_2} -row 1 -col 1
 move_dashboard_gadget -name {methodology_1} -row 2 -col 1
+
+# Create block design
+ source $origin_dir/src/bd/design_1.tcl
+
+ # Generate the wrapper
+ set design_name [get_bd_designs]
+ make_wrapper -files [get_files $design_name.bd] -top -import
