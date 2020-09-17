@@ -39,6 +39,8 @@ set origin_dir [file dirname [info script]]
 # Create project
 create_project ws2812_pynq $origin_dir/ws2812_pynq
 
+set _xil_proj_name_ "ws2812_pynq"
+
 # Use project name variable, if specified in the tcl shell
 if { [info exists ::user_project_name] } {
   set _xil_proj_name_ $::user_project_name
