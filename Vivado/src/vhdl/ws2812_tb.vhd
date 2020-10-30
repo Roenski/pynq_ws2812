@@ -61,9 +61,9 @@ begin
         clk <= '0';
         doutb <= (OTHERS => '0');
         wait for 25 ns;
-        doutb(31) <= '1';
-        doutb(15) <= '1';
-        doutb(1) <= '1';
+        doutb(31) <= '0';
+        doutb(15) <= '0';
+        doutb(0) <= '1';
         wait for 25 ns;
         for I in 0 to 10000 loop
             clk <= '1';

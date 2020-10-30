@@ -53,7 +53,7 @@ architecture rtl of ws2812 is
     CONSTANT zero  : std_logic_vector(24 DOWNTO 0) := "1111111000000000000000000"; --waveform for a zero bit  
     CONSTANT one   : std_logic_vector(24 DOWNTO 0) := "1111111111111100000000000"; --waveform for a one bit   
     CONSTANT numb_pixels : integer := 24; --number of bits in a pixel  
-    CONSTANT reset_duration : integer := 1000;--number cclocks in the reset period  
+    CONSTANT reset_duration : integer := 1020;--number cclocks in the reset period  
     SIGNAL shift_reg : std_logic_vector(24 DOWNTO 0) := (OTHERS=>'0'); -- shift reg containing the output pixel waveform  
     SIGNAL shift_dne : std_logic_vector(25 DOWNTO 0) := (OTHERS=>'0'); -- shift reg for timing the output shift reg for next load  
     SIGNAL current_state : fsm := idle; --fsm to control the pixel beign output   
