@@ -6,7 +6,7 @@ set origin_dir [file dirname [info script]]
 set project_name "ws2812_pynq"
 
 # Creates project files
-create_project $project_name $origin_dir/$project_name -part xc7z020clg400-1
+create_project $project_name $origin_dir/$project_name -part xc7z020clg400-1 -force
 
 # Set the board as pynq-z2
 set_property board_part tul.com.tw:pynq-z2:part0:1.0 [current_project]
