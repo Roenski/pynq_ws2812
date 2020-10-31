@@ -53,14 +53,14 @@ architecture rtl of ws2812 is
     CONSTANT zero  : std_logic_vector(24 DOWNTO 0) := "1111111000000000000000000"; --waveform for a zero bit  
     CONSTANT one   : std_logic_vector(24 DOWNTO 0) := "1111111111111100000000000"; --waveform for a one bit   
     CONSTANT numb_pixels : integer := 24; --number of bits in a pixel  
-    CONSTANT reset_duration : integer := 1020;--number cclocks in the reset period  
+    CONSTANT reset_duration : integer := 2000;--number cclocks in the reset period  
     SIGNAL shift_reg : std_logic_vector(24 DOWNTO 0) := (OTHERS=>'0'); -- shift reg containing the output pixel waveform  
     SIGNAL shift_dne : std_logic_vector(25 DOWNTO 0) := (OTHERS=>'0'); -- shift reg for timing the output shift reg for next load  
     SIGNAL current_state : fsm := idle; --fsm to control the pixel beign output   
     SIGNAL prev_state : fsm := idle; --previous state   
     SIGNAL load_shr : std_logic :='0'; --loads the shr with the next pixel   
     SIGNAL pix_cnt  : integer RANGE 0 TO 31 := 0; --counts the position in the pixel to op   
-    SIGNAL rst_cnt  : integer RANGE 0 TO 1023 := 0; --counts number of clocks in the reset period 50 us @ 20 MHz  
+    SIGNAL rst_cnt  : integer RANGE 0 TO 2047 := 0; --counts number of clocks in the reset period 50 us @ 20 MHz  
     SIGNAL led_numb : integer RANGE 0 TO 1023; --number of LED in the string  
     SIGNAL ram_addr : integer RANGE 0 TO 1023:=0; --address to read from RAM  
     SIGNAL led_cnt  : integer RANGE 0 TO 1023;--counts leds it has addressed   
