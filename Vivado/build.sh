@@ -4,4 +4,4 @@
 
 # Insert the path where the vivado binary is located.
 VIVADO_PATH="/media/aleksi/HDDLnx/XilinxInstall/Vivado/2020.1/bin"
-$VIVADO_PATH/vivado -mode batch -source build.tcl 
+$VIVADO_PATH/vivado -mode gui -source build.tcl 
